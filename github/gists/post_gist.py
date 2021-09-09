@@ -23,7 +23,7 @@ def post_gist(
     :param contents: A list of File.
     :param accept: Default is application/vnd.github.v3+json.
     :param public: Determined whether the gist is public or private (secret).
-    :return: `dict`
+    :return: `Gist` object
     :raises: `RuntimeError` in case one of the parameters is invalid.
     """
     url = "https://api.github.com/gists"

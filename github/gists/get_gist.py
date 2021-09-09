@@ -10,7 +10,7 @@ def get_gist(
     Documentation for get_gist. Get information and content of a particular gist_id.
     :param gist_id: The desired gist.
     :param accept: Default is application/vnd.github.v3+json.
-    :return: `dict`
+    :return: `Gist` object
     :raises: `RuntimeError` in case one of the parameters is invalid.
     """
     url = f"https://api.github.com/gists/{gist_id}"

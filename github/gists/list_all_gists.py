@@ -1,4 +1,5 @@
 from ..utils import Get
+from .data_types import SearchResultGist
 
 
 def list_all_gists(
@@ -16,7 +17,7 @@ def list_all_gists(
     :param per_page: Results per page (max 100). Default: 30
     :param page: Page number of the results to fetch. Default: 1
     :param accept: Setting to application/vnd.github.v3+json is recommended.
-    :return: `dict`
+    :return: `List[SearchResultGist]`
     :raises: `RuntimeError` in case one of the parameters is invalid.
 
     **Important: In order to retrieve Secret Gists too, you must not user a regular OAuth Token
@@ -29,4 +30,4 @@ def list_all_gists(
             params={"since": since, "per_page": per_page, "page": page},
             auth=("token", token)
     ) as response:
-        return response
+        return [SearchResultGist(**response) for response in response]
