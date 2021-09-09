@@ -4,6 +4,14 @@ import re
 import typing
 
 
+def remove(*fields):
+    def _(cls):
+        for field in fields:
+            del cls.__annotations__[field]
+        return dataclasses.make_dataclass(cls.__name__,  cls.__annotations__)
+    return _
+
+
 @dataclasses.dataclass(frozen=True)
 class Field:
     type: typing.Any
@@ -150,3 +158,8 @@ class Gist(Custom):
     forks: Field(Fork, True)
     history: Field(History, True)
     truncated: bool
+
+
+@remove("forks", "history")
+class SearchResultGist(Gist):
+    pass
