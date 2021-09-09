@@ -1,5 +1,5 @@
 import typing
-from requests import get, post
+from requests import get, post, patch, delete, put
 
 
 class Request:
@@ -26,3 +26,6 @@ class Request:
 
 Get = Request[get]
 Post = Request[post]
+Patch = Request[patch]
+Delete = Request[delete]
+Put = Request[put]
