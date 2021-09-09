@@ -1,7 +1,7 @@
 from ..utils import Get
 
 
-def list_gists(
+def list_all_gists(
         token: str = None,
         since: str = None,
         per_page: int = 30,
