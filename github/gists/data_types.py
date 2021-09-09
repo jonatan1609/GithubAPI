@@ -6,8 +6,8 @@ import typing
 
 @dataclasses.dataclass(frozen=True)
 class Field:
-    list: bool
     type: typing.Any
+    list: bool = False
 
 
 class Custom:
@@ -99,17 +99,17 @@ class ForkUser(Custom):
     public_gists: int
     followers: int
     following: int
-    created_at: Field(False, datetime.datetime)
-    updated_at: Field(False, datetime.datetime)
+    created_at: Field(datetime.datetime)
+    updated_at: Field(datetime.datetime)
 
 
 @dataclasses.dataclass()
 class Fork(Custom):
     url: str
-    user: Field(False, ForkUser)
+    user: Field(ForkUser)
     id: str
-    created_at: Field(False, datetime.datetime)
-    updated_at: Field(False, datetime.datetime)
+    created_at: Field(datetime.datetime)
+    updated_at: Field(datetime.datetime)
 
 
 @dataclasses.dataclass()
@@ -121,10 +121,10 @@ class ChangeStatus:
 
 @dataclasses.dataclass()
 class History(Custom):
-    user: Field(False, User)
+    user: Field(User)
     version: str
-    committed_at: Field(False, datetime.datetime)
-    change_status: Field(False, ChangeStatus)
+    committed_at: Field(datetime.datetime)
+    change_status: Field(ChangeStatus)
     url: str
 
 
@@ -138,15 +138,15 @@ class Gist(Custom):
     git_pull_url: str
     git_push_url: str
     html_url: str
-    files: Field(True, File)
+    files: Field(File, True)
     public: bool
-    created_at: Field(False, datetime.datetime)
-    updated_at: Field(False, datetime.datetime)
+    created_at: Field(datetime.datetime)
+    updated_at: Field(datetime.datetime)
     description: str
     comments: int
     user: typing.Any
     comments_url: str
-    owner: Field(False, User)
-    forks: Field(True, Fork)
-    history: Field(True, History)
+    owner: Field(User)
+    forks: Field(Fork, True)
+    history: Field(History, True)
     truncated: bool
