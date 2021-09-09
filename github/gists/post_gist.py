@@ -25,7 +25,7 @@ def post_gist(
     """
     url = "https://api.github.com/gists"
 
-    response = Post(
+    request = Post(
         url,
         headers={"Accept": accept},
         data=json.dumps({
@@ -37,5 +37,6 @@ def post_gist(
         }),
         auth=("token", token),
     )
-    with response:
+
+    with request as response:
         return Gist(**response)
