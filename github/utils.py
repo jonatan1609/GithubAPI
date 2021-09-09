@@ -12,10 +12,15 @@ class Request:
         self.method = method
 
     def __call__(self, *args, **kwargs):
-        self.response = self.method(*args, **kwargs)
+        self.request_args = args, kwargs
         return self
 
+    def evaluate(self):
+        self.response = self.method(*self.request_args[0], **self.request_args[1])
+
     def __enter__(self):
+        if self.response is Ellipsis:
+            self.evaluate()
         if self.response.status_code not in {200, 201}:
             raise RuntimeError(self.response.json()["message"])
         return self.response.json()
