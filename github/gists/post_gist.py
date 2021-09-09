@@ -13,8 +13,11 @@ def post_gist(
         public: bool = True,
 ):
     """
-    Documentation for post_gist.
-    Upload a new file (or some files at once) to gist.github.com.
+    Allows you to add a new gist with one or more files.
+
+    Note: Don't name your files "gistfile" with a numerical suffix.
+    This is the format of the automatic naming scheme that Gist uses internally.
+
     :param token: Your github token to perform actions.
     :param description: The description of the gist.
     :param contents: A list of File.
