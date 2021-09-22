@@ -163,10 +163,3 @@ class Gist(Custom):
 @remove("forks", "history")
 class SearchResultGist(Gist):
     pass
-
-
-@dataclasses.dataclass()
-class GistCommits:
-    def __post_init__(self):
-        self.commits = [Commit(**commit) for commit in self.commits]
-    commits: list

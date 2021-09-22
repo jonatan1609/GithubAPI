@@ -1,5 +1,5 @@
 from ..utils import Get
-from .data_types import GistCommits
+from .data_types import Commit
 
 
 def list_gist_commits(
@@ -14,7 +14,7 @@ def list_gist_commits(
     :param per_page: Results per page (max 100). Default: 30
     :param page: Page number of the results to fetch. Default: 1
     :param accept: Setting to application/vnd.github.v3+json is recommended.
-    :return: `List[SearchResultGist]`
+    :return: `List[Commit]`
     :raises: `RuntimeError` in case one of the parameters is invalid.
     """
     url = f"https://api.github.com/gists/{gist_id}/commits"
@@ -24,4 +24,4 @@ def list_gist_commits(
             headers={"Accept": accept},
             params={"per_page": per_page, "page": page},
     ) as response:
-        return GistCommits(response)
+        return [Commit(**commit) for commit in response]
