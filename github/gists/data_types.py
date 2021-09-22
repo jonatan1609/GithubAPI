@@ -1,4 +1,5 @@
 import copy
+import pickle
 import dataclasses
 import datetime
 import re
@@ -7,10 +8,10 @@ import typing
 
 def remove(*fields):
     def _(cls):
-        cls.__annotations__ = copy.copy(cls.__annotations__)
+        ann = copy.copy(cls.__annotations__)
         for field in fields:
-            del cls.__annotations__[field]
-        return dataclasses.make_dataclass(cls.__name__,  cls.__annotations__)
+            del ann[field]
+        return dataclasses.make_dataclass(cls.__name__, ann)
     return _
 
 
@@ -162,11 +163,13 @@ class Gist(Custom):
     truncated: bool
 
 
+@dataclasses.dataclass()
 @remove("forks", "history")
 class SearchResultGist(Gist):
     pass
 
 
+@dataclasses.dataclass()
 @remove("forks", "history", "truncated")
 class ForkedGist(Gist):
     pass
