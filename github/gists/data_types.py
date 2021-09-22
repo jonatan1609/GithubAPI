@@ -128,7 +128,7 @@ class ChangeStatus:
 
 
 @dataclasses.dataclass()
-class History(Custom):
+class Commit(Custom):
     user: Field(User)
     version: str
     committed_at: Field(datetime.datetime)
@@ -156,10 +156,17 @@ class Gist(Custom):
     comments_url: str
     owner: Field(User)
     forks: Field(Fork, True)
-    history: Field(History, True)
+    history: Field(Commit, True)
     truncated: bool
 
 
 @remove("forks", "history")
 class SearchResultGist(Gist):
     pass
+
+
+@dataclasses.dataclass()
+class GistCommits:
+    def __post_init__(self):
+        self.commits = [Commit(**commit) for commit in self.commits]
+    commits: list
