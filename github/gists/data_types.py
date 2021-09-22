@@ -8,10 +8,14 @@ import typing
 
 def remove(*fields):
     def _(cls):
-        ann = copy.copy(cls.__annotations__)
+        fields_copy = copy.copy(cls.__dataclass_fields__)
+        annotations_copy = copy.deepcopy(cls.__annotations__)
         for field in fields:
-            del ann[field]
-        return dataclasses.make_dataclass(cls.__name__, ann)
+            del fields_copy[field]
+            del annotations_copy[field]
+        d_cls = dataclasses.make_dataclass(cls.__name__, annotations_copy, bases=(Custom,))
+        d_cls.__dataclass_fields__ = fields_copy
+        return d_cls
     return _
 
 
@@ -163,13 +167,11 @@ class Gist(Custom):
     truncated: bool
 
 
-@dataclasses.dataclass()
 @remove("forks", "history")
 class SearchResultGist(Gist):
     pass
 
 
-@dataclasses.dataclass()
 @remove("forks", "history", "truncated")
 class ForkedGist(Gist):
     pass
