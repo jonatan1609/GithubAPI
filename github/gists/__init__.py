@@ -20,3 +20,4 @@ from .delete_gist import delete_gist
 from .list_gist_commits import list_gist_commits
 from .list_gist_forks import list_gist_forks
 from .fork_gist import fork_gist
+from .gist_is_starred import gist_is_starred
