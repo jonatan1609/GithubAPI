@@ -22,3 +22,4 @@ from .list_gist_forks import list_gist_forks
 from .fork_gist import fork_gist
 from .gist_is_starred import gist_is_starred
 from .star_gist import star_gist
+from .unstar_gist import unstar_gist
