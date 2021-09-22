@@ -1,3 +1,4 @@
+import copy
 import dataclasses
 import datetime
 import re
@@ -6,6 +7,7 @@ import typing
 
 def remove(*fields):
     def _(cls):
+        cls.__annotations__ = copy.copy(cls.__annotations__)
         for field in fields:
             del cls.__annotations__[field]
         return dataclasses.make_dataclass(cls.__name__,  cls.__annotations__)
@@ -162,4 +164,9 @@ class Gist(Custom):
 
 @remove("forks", "history")
 class SearchResultGist(Gist):
+    pass
+
+
+@remove("forks", "history", "truncated")
+class ForkedGist(Gist):
     pass
