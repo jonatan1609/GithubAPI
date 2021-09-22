@@ -6,4 +6,5 @@ from .list_starred_gists import list_starred_gists
 from .update_gist import update_gist
 from .delete_gist import delete_gist
 from .list_gist_commits import list_gist_commits
+from .list_gist_forks import list_gist_forks
 
