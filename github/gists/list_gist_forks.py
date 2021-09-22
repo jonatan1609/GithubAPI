@@ -14,7 +14,7 @@ def list_gist_forks(
     :param per_page: Results per page (max 100). Default: 30
     :param page: Page number of the results to fetch. Default: 1
     :param accept: Setting to application/vnd.github.v3+json is recommended.
-    :return: `List[Gist]`
+    :return: `List[ForkedGist]`
     :raises: `RuntimeError` in case one of the parameters is invalid.
     """
     url = f"https://api.github.com/gists/{gist_id}/forks"
