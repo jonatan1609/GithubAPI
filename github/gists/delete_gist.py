@@ -1,7 +1,7 @@
 from ..utils import Delete
 
 
-def delete_post(
+def delete_gist(
         token: str,
         gist_id: str,
         accept: str = "application/vnd.github.v3+json"
