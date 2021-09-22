@@ -1,5 +1,4 @@
 import copy
-import pickle
 import dataclasses
 import datetime
 import re
@@ -9,7 +8,7 @@ import typing
 def remove(*fields):
     def _(cls):
         fields_copy = copy.copy(cls.__dataclass_fields__)
-        annotations_copy = copy.deepcopy(cls.__annotations__)
+        annotations_copy = copy.deepcopy({**getattr(cls, "__use_annotations__", {}), **cls.__annotations__})
         for field in fields:
             del fields_copy[field]
             del annotations_copy[field]
@@ -175,3 +174,15 @@ class SearchResultGist(Gist):
 @remove("forks", "history", "truncated")
 class ForkedGist(Gist):
     pass
+
+
+@remove("content", "truncated")
+class ForkedFile(File):
+    pass
+
+
+@remove("forks", "history")
+@dataclasses.dataclass()  # In case we don't leave the class body empty we need to re-create the dataclass.
+class Forked(Gist):
+    files: Field(ForkedFile, True)
+    __use_annotations__ = Gist.__annotations__
