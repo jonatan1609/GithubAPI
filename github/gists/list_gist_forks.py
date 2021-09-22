@@ -10,7 +10,7 @@ def list_gist_forks(
 ):
     """
     Lists forks in a particular gist.
-    :param gist_id: The particular gist to get its commits.
+    :param gist_id: The particular gist to get its forks.
     :param per_page: Results per page (max 100). Default: 30
     :param page: Page number of the results to fetch. Default: 1
     :param accept: Setting to application/vnd.github.v3+json is recommended.
