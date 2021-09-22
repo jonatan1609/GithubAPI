@@ -7,7 +7,7 @@ def gist_is_starred(
         accept: str = "application/vnd.github.v3+json"
 ):
     """
-    Lists the authenticated user's starred gists.
+    Star a gist.
     :param token: User authentication.
     :param gist_id: gist to check if it's starred by the authenticated user or not.
     :param accept: Setting to application/vnd.github.v3+json is recommended.
