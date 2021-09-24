@@ -26,3 +26,4 @@ from .star_gist import star_gist
 from .unstar_gist import unstar_gist
 from .get_gist_revision import get_gist_revision
 from .list_gist_comments import list_gist_comments
+from .post_comment import post_comment
