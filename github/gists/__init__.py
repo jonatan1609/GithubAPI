@@ -9,9 +9,10 @@ from .data_types import (
     Fork,
     ForkUser,
     SearchResultGist,
-    ForkedFile,
+    NoContentFile,
     Forked,
-    ForkedGist
+    ForkedGist,
+    Comment
 )
 from .list_all_gists import list_all_gists
 from .list_starred_gists import list_starred_gists
@@ -24,3 +25,4 @@ from .gist_is_starred import gist_is_starred
 from .star_gist import star_gist
 from .unstar_gist import unstar_gist
 from .get_gist_revision import get_gist_revision
+from .list_gist_comments import list_gist_comments
