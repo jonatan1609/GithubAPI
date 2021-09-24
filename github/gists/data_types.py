@@ -83,6 +83,10 @@ class User(Custom):
 
 @dataclasses.dataclass()
 class ForkUser(Custom):
+    # Only for type annotations:
+    created_at: datetime.datetime
+    updated_at: datetime.datetime
+    # real fields:
     login: str
     id: int
     node_id: str
@@ -119,6 +123,11 @@ class ForkUser(Custom):
 
 @dataclasses.dataclass()
 class Fork(Custom):
+    # Only for type annotations:
+    user: ForkUser
+    created_at: datetime.datetime
+    updated_at: datetime.datetime
+    # real fields:
     url: str
     user: Field(ForkUser)
     id: str
@@ -135,6 +144,11 @@ class ChangeStatus:
 
 @dataclasses.dataclass()
 class Commit(Custom):
+    # Only for type annotations:
+    user: User
+    committed_at: datetime.datetime
+    change_status: ChangeStatus
+    # real fields:
     user: Field(User)
     version: str
     committed_at: Field(datetime.datetime)
@@ -144,6 +158,14 @@ class Commit(Custom):
 
 @dataclasses.dataclass()
 class Gist(Custom):
+    # Only for type annotations:
+    files: typing.List[File]
+    created_at: datetime.datetime
+    updated_at: datetime.datetime
+    owner: User
+    forks: typing.List[Fork]
+    history: typing.List[Commit]
+    # real fields:
     url: str
     forks_url: str
     commits_url: str
@@ -184,5 +206,8 @@ class ForkedFile(File):
 @remove("forks", "history")
 @dataclasses.dataclass()  # In case we don't leave the class body empty we need to re-create the dataclass.
 class Forked(Gist):
+    # Only for type annotations:
+    files: typing.List[ForkedFile]
+    # real fields:
     files: Field(ForkedFile, True)
     __use_annotations__ = Gist.__annotations__
