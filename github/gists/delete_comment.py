@@ -4,7 +4,7 @@ from ..utils import Delete
 def delete_comment(
         token: str,
         gist_id: str,
-        id: int,
+        comment_id: int,
         accept: str = "application/vnd.github.v3+json",
 ):
     """
@@ -12,12 +12,12 @@ def delete_comment(
 
     :param token: Your github token to post a comment.
     :param gist_id: The gist to comment in.
-    :param id: The id of the comment.
+    :param comment_id: The id of the comment.
     :param accept: Default is application/vnd.github.v3+json.
     :return: `Comment` object
     :raises: `RuntimeError` in case one of the parameters is invalid.
     """
-    url = f"https://api.github.com/gists/{gist_id}/comments/{id}"
+    url = f"https://api.github.com/gists/{gist_id}/comments/{comment_id}"
 
     request = Delete(
         url,
