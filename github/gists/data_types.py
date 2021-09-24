@@ -188,18 +188,13 @@ class Gist(Custom):
     truncated: bool
 
 
-@remove("forks", "history")
-class SearchResultGist(Gist):
-    pass
-
-
 @remove("forks", "history", "truncated")
 class ForkedGist(Gist):
     pass
 
 
 @remove("content", "truncated")
-class ForkedFile(File):
+class NoContentFile(File):
     pass
 
 
@@ -207,7 +202,28 @@ class ForkedFile(File):
 @dataclasses.dataclass()  # In case we don't leave the class body empty we need to re-create the dataclass.
 class Forked(Gist):
     # Only for type annotations:
-    files: typing.List[ForkedFile]
+    files: typing.List[NoContentFile]
     # real fields:
-    files: Field(ForkedFile, True)
+    files: Field(NoContentFile, True)
     __use_annotations__ = Gist.__annotations__
+
+
+class SearchResultGist(Forked):
+    pass
+
+
+@dataclasses.dataclass()
+class Comment(Custom):
+    # Only for type annotations:
+    user: User
+    created_at: datetime.datetime
+    updated_at: datetime.datetime
+    # real fields:
+    url: str
+    id: int
+    node_id: str
+    user: Field(User)
+    author_association: str
+    created_at: Field(datetime.datetime)
+    updated_at: Field(datetime.datetime)
+    body: str
