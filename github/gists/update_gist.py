@@ -1,4 +1,3 @@
-import json
 import typing
 import dataclasses
 from .data_types import Gist, File
@@ -30,5 +29,5 @@ def update_gist(
         body["description"] = description
     if files:
         body["files"] = {n: dataclasses.asdict(file) for n, file in enumerate(files)}
-    with Patch(url, headers={"Accept": accept}, data=json.dumps(body), auth=("token", token)) as response:
+    with Patch(url, headers={"Accept": accept}, json=body, auth=("token", token)) as response:
         return Gist(**response)

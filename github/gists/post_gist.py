@@ -1,5 +1,4 @@
 import dataclasses
-import json
 import typing
 from .data_types import File, Gist
 from ..utils import Post
@@ -31,13 +30,13 @@ def post_gist(
     request = Post(
         url,
         headers={"Accept": accept},
-        data=json.dumps({
+        json={
             "description": description,
             "public": public,
             "files": {
                 n: dataclasses.asdict(file) for n, file in enumerate(contents)
             }
-        }),
+        },
         auth=("token", token),
     )
 
