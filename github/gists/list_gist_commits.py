@@ -3,7 +3,7 @@ from .data_types import Commit
 
 
 def list_gist_commits(
-        gist_id: str = None,
+        gist_id: str,
         per_page: int = 30,
         page: int = 1,
         accept: str = "application/vnd.github.v3+json"
