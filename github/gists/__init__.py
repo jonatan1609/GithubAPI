@@ -30,3 +30,4 @@ from .post_comment import post_comment
 from .delete_comment import delete_comment
 from .get_comment import get_comment
 from .update_comment import update_comment
+from .list_user_gists import list_user_gists
