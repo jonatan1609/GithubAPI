@@ -6,7 +6,7 @@ def delete_comment(
         gist_id: str,
         comment_id: int,
         accept: str = "application/vnd.github.v3+json",
-):
+) -> bool:
     """
     Delete a comment.
 
@@ -14,7 +14,7 @@ def delete_comment(
     :param gist_id: The gist to comment in.
     :param comment_id: The id of the comment.
     :param accept: Default is application/vnd.github.v3+json.
-    :return: `Comment` object
+    :return: `bool` - True in case the comment was deleted successfully.
     :raises: `RuntimeError` in case one of the parameters is invalid.
     """
     url = f"https://api.github.com/gists/{gist_id}/comments/{comment_id}"
