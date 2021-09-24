@@ -9,16 +9,16 @@ def update_gist(
     gist_id: str,
     description: str = None,
     files: typing.Sequence[File] = (),
-    accept: str = "application/vnd.github.v3+json"
+    accept: str = "application/vnd.ghclient.v3+json"
 ) -> Gist:
     """
     Allows you to update or delete a gist file and rename gist files. Files from the previous version of the gist that aren't explicitly changed during an edit are unchanged.
 
-    :param token: Your github token to perform actions.
+    :param token: Your ghclient token to perform actions.
     :param gist_id: The ID of the gist.
     :param description: Description of the gist
     :param files: Names of files to be updated
-    :param accept: Default: "application/vnd.github.v3+json"
+    :param accept: Default: "application/vnd.ghclient.v3+json"
     :return: `Gist` object
     :raises: `RuntimeError` in case one of the parameters is invalid.
     """

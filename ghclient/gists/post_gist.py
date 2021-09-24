@@ -8,7 +8,7 @@ def post_gist(
         token: str,
         description: str,
         contents: typing.Sequence[File],
-        accept: str = "application/vnd.github.v3+json",
+        accept: str = "application/vnd.ghclient.v3+json",
         public: bool = True,
 ) -> Gist:
     """
@@ -17,10 +17,10 @@ def post_gist(
     Note: Don't name your files "gistfile" with a numerical suffix.
     This is the format of the automatic naming scheme that Gist uses internally.
 
-    :param token: Your github token to perform actions.
+    :param token: Your ghclient token to perform actions.
     :param description: The description of the gist.
     :param contents: A list of File.
-    :param accept: Default is application/vnd.github.v3+json.
+    :param accept: Default is application/vnd.ghclient.v3+json.
     :param public: Determined whether the gist is public or private (secret).
     :return: `Gist` object
     :raises: `RuntimeError` in case one of the parameters is invalid.

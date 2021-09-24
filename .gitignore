@@ -4,3 +4,7 @@ __pycache__
 */__pycache__
 *.pyc
 main.py
+build/
+dist/
+*egg
+*egg-info
