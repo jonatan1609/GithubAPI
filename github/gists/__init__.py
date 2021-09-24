@@ -28,3 +28,4 @@ from .get_gist_revision import get_gist_revision
 from .list_gist_comments import list_gist_comments
 from .post_comment import post_comment
 from .delete_comment import delete_comment
+from .get_comment import get_comment
