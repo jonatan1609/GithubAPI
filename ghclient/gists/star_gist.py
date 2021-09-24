@@ -4,13 +4,13 @@ from ..utils import Put
 def star_gist(
         token: str,
         gist_id: str,
-        accept: str = "application/vnd.ghclient.v3+json"
+        accept: str = "application/vnd.github.v3+json"
 ) -> bool:
     """
     Star a gist
     :param token: User authentication.
     :param gist_id: Star the gist by the authenticated user.
-    :param accept: Setting to application/vnd.ghclient.v3+json is recommended.
+    :param accept: Setting to application/vnd.github.v3+json is recommended.
     :return: `bool` - True in case the gist was starred successfully.
     :raises: `RuntimeError` in case one of the parameters is invalid.
     """

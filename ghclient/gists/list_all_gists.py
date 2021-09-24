@@ -8,7 +8,7 @@ def list_all_gists(
         since: str = None,
         per_page: int = 30,
         page: int = 1,
-        accept: str = "application/vnd.ghclient.v3+json"
+        accept: str = "application/vnd.github.v3+json"
 ) -> List[SearchResultGist]:
     """
     Lists the authenticated user's gists *or if called anonymously, this endpoint returns all public gists*
@@ -17,7 +17,7 @@ def list_all_gists(
     Default: forever.
     :param per_page: Results per page (max 100). Default: 30
     :param page: Page number of the results to fetch. Default: 1
-    :param accept: Setting to application/vnd.ghclient.v3+json is recommended.
+    :param accept: Setting to application/vnd.github.v3+json is recommended.
     :return: `List[SearchResultGist]`
     :raises: `RuntimeError` in case one of the parameters is invalid.
 
