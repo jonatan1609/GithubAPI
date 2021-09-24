@@ -1,5 +1,6 @@
 from ..utils import Get
 from .data_types import SearchResultGist
+from typing import List
 
 
 def list_all_gists(
@@ -8,7 +9,7 @@ def list_all_gists(
         per_page: int = 30,
         page: int = 1,
         accept: str = "application/vnd.github.v3+json"
-):
+) -> List[SearchResultGist]:
     """
     Lists the authenticated user's gists *or if called anonymously, this endpoint returns all public gists*
     :param token: User authentication, if token is not supplied - this endpoint returns all public gists.

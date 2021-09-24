@@ -5,7 +5,7 @@ def gist_is_starred(
         token: str,
         gist_id: str,
         accept: str = "application/vnd.github.v3+json"
-):
+) -> bool:
     """
     Star a gist.
     :param token: User authentication.

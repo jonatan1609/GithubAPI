@@ -1,5 +1,6 @@
 from ..utils import Get
 from .data_types import ForkedGist
+from typing import List
 
 
 def list_gist_forks(
@@ -7,7 +8,7 @@ def list_gist_forks(
         per_page: int = 30,
         page: int = 1,
         accept: str = "application/vnd.github.v3+json"
-):
+) -> List[ForkedGist]:
     """
     Lists forks in a particular gist.
     :param gist_id: The particular gist to get its forks.

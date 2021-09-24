@@ -1,5 +1,6 @@
 from ..utils import Get
 from .data_types import Comment
+from typing import List
 
 
 def list_gist_comments(
@@ -7,7 +8,7 @@ def list_gist_comments(
         per_page: int = 30,
         page: int = 1,
         accept: str = "application/vnd.github.v3+json"
-):
+) -> List[Comment]:
     """
     Lists comments in a particular gist.
     :param gist_id: The particular gist to get its comments.

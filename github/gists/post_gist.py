@@ -11,7 +11,7 @@ def post_gist(
         contents: typing.Sequence[File],
         accept: str = "application/vnd.github.v3+json",
         public: bool = True,
-):
+) -> Gist:
     """
     Allows you to add a new gist with one or more files.
 

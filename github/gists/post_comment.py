@@ -7,7 +7,7 @@ def post_comment(
         gist_id: str,
         comment_body: str,
         accept: str = "application/vnd.github.v3+json",
-):
+) -> Comment:
     """
     Post a new comment.
 

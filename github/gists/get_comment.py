@@ -6,7 +6,7 @@ def get_comment(
         gist_id: str,
         comment_id: int,
         accept: str = "application/vnd.github.v3+json",
-):
+) -> Comment:
     """
     Post a new comment.
 

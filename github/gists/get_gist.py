@@ -5,7 +5,7 @@ from .post_gist import Gist
 def get_gist(
         gist_id: str,
         accept: str = "application/vnd.github.v3+json"
-):
+) -> Gist:
     """
     Documentation for get_gist. Get information and content of a particular gist_id.
     :param gist_id: The desired gist.

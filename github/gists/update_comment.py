@@ -8,7 +8,7 @@ def update_comment(
         comment_id: int,
         comment_body: str,
         accept: str = "application/vnd.github.v3+json",
-):
+) -> Comment:
     """
     Delete a comment.
 
