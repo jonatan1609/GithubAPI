@@ -19,8 +19,10 @@ class Request:
         self.method = method
 
     def __call__(self, *args, **kwargs):
-        self.request_args = args, kwargs
-        return self
+        new_self = self.__class__(self.method)
+        new_self.is_json = self.is_json
+        new_self.request_args = args, kwargs
+        return new_self
 
     def evaluate(self):
         self.response = self.method(*self.request_args[0], **self.request_args[1])
